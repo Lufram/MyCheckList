@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/editTextPersonName"
+        android:layout_width="213dp"
+        android:layout_height="61dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="102dp"
+        android:ems="10"
+        android:text="@string/name"
+        app:layout_constrainStart_toStartOf="parent"
+        app:layout_constrainTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndof="parent" />
+
+    <EditText
+        android:id="@+id/editTextPersonPassword"
+        android:layout_width="213dp"
+        android:layout_height="61dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="102dp"
+        android:ems="10"
+        android:text="@string/password"
+        app:layout_constrainStart_toStartOf="parent"
+        app:layout_constrainTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndof="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextPersonPassword"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="158.5dp"
+        android:text="@string/login"
+        app:cornerRadius="20dp"
+        app:layout_constrainStart_toStartOf="parent"
+        app:layout_constrainTop_toBottomOf="@+id/editTextPersonName"
+        app:layout_constraintEnd_toEndof="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/accept_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextPersonPassword"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="158.5dp"
+        android:text="@string/login"
+        app:cornerRadius="20dp"
+        app:layout_constrainStart_toStartOf="parent"
+        app:layout_constrainTop_toBottomOf="@+id/editTextPersonName"
+        app:layout_constraintEnd_toEndof="parent" />
+
+
+
+
+</RelativeLayout>

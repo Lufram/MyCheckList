@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <!-- imagen de fondo -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/login_img_background"
+        android:scaleType="fitXY"
+        android:src="@drawable/fondo_login" />
+
+    <!-- titulo -->
+    <TextView
+        android:id="@+id/titulo_login"
+        style="@style/etiquetas"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="@string/my_check_list"
+        android:textColor="@color/primary_900"
+        android:textSize="50sp"
+        android:letterSpacing="0.1"/>
+
+
+
+    <!-- subtitulo -->
+    <TextView
+        android:id="@+id/subtitulo_login"
+        style="@style/etiquetas"
+        android:layout_below="@id/titulo_login"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/login"
+        android:textAlignment="textStart"
+        android:textColor="@color/primary_500"
+        android:textSize="40sp"
+        android:letterSpacing="0.01"/>
+
+
+    <!-- Fondo cuadrado del login -->
+    <LinearLayout
+        android:id="@+id/caja_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/subtitulo_login"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:padding="10dp"
+        >
+
+
+        <!-- caja texto usuario -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/cajasInput"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cajaUser"
+                style="@style/cajasTexto"
+                android:hint="@string/user"
+                android:drawableLeft="@drawable/ic_user"/>
+            <requestFocus />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <!-- caja texto password -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/cajasInput"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cajaPass"
+                style="@style/cajasTexto"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:drawableLeft="@drawable/ic_password"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+    <!-- Boton -->
+    <Button
+        android:id="@+id/boton_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/caja_login"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/boton"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:onClick="login"/>
+
+    <!-- Crear cuenta -->
+    <Button
+        android:id="@+id/crear_cuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="136dp"
+        android:background="@color/accent_900"
+        android:onClick="createAccount"
+        android:text="@string/sign_up"
+        android:letterSpacing="0.1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="650dp" />
+
+
+</RelativeLayout>

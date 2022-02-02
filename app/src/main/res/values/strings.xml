@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="login">Log in</string>
+    <string name="loading">Loading...</string>
+
+    <string name="user_name">User Name</string>
+    <string name="user">User</string>
+    <string name="login_img_background">login image background</string>
+    <string name="create">Create</string>
+    <string name="back">Back</string>
+
+    <string name="my_check_list">"check list"</string>
+    <string name="sign_up">Sign up</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".TaskActivity">
+
+    <item
+        android:id="@+id/icon_add_task"
+        android:icon="@mipmap/add_task"
+        android:title="item"
+        app:showAsAction="always"
+        />
+
+</menu>
