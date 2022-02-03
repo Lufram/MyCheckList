@@ -9,14 +9,21 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.db.DbController;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private DbController dbController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        dbController = new DbController(this);
+
+
         // ocultar Action Bar
         getSupportActionBar().hide();
 
@@ -42,18 +49,23 @@ public class LoginActivity extends AppCompatActivity {
         TextInputEditText user = (TextInputEditText) findViewById(R.id.cajaUser);
         TextInputEditText password = (TextInputEditText) findViewById(R.id.cajaPass);
 
-        String nombre = user.getText().toString();
+        String name = user.getText().toString();
         String pass = password.getText().toString();
 
-        if (nombre.length() == 0) {
+        if (name.length() == 0) {
             Toast.makeText(this,"Debes ingresar un nombre", Toast.LENGTH_LONG).show();
         }
         if (pass.length() == 0) {
             Toast.makeText(this,"Debes ingresar un password", Toast.LENGTH_LONG).show();
         }
-        if (nombre.length() !=0 && pass.length() != 0 ) {
-            Intent i = new Intent(this, TaskActivity.class);
-            startActivity(i);
+        if (name.length() !=0 && pass.length() != 0 ) {
+            Boolean checkUserNamePass = dbController.checkUserNamePass(name,password);
+            if (checkUserNamePass) {
+                Intent intent = new Intent(this,TaskActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this,"Datos no válidos", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
