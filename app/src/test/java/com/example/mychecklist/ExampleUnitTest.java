@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.mychecklist;
 
 import org.junit.Test;
 

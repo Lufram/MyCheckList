@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Summun/AndroidStudioProjects/MyApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
+        <entry key="..\:/Users/Summun/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/buttom.xml" value="0.3828125" />
+        <entry key="..\:/Users/Summun/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/gradient.xml" value="0.221875" />
         <entry key="..\:/Users/Summun/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/gradient_back_green.xml" value="0.3828125" />
         <entry key="..\:/Users/Summun/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
         <entry key="..\:/Users/Summun/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
@@ -11,6 +13,8 @@
         <entry key="..\:/Users/Summun/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_new_account.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Summun/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Summun/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_task.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Summun/AndroidStudioProjects/MyApplication/app/src/main/res/layout/item_task.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Summun/AndroidStudioProjects/MyApplication/app/src/main/res/menu/menu.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

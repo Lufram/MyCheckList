@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.mychecklist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,13 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.myapplication.db.DbController;
+import com.example.mychecklist.db.DbController;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class NewAccountActivity extends AppCompatActivity {
 
-    TextInputEditText usuario, pass;
-    Button boton_crear;
+    TextInputEditText user, pass;
+    Button button_create;
     private DbController dbController;
 
 
@@ -30,16 +30,16 @@ public class NewAccountActivity extends AppCompatActivity {
         dbController = new DbController(this);
 
 
-        user = (TextInputEditText) findViewById(R.id.box_new_usuario);
-        pass = (TextInputEditText) findViewById(R.id.box_new_password);
-        botton_create = (Button) findViewById(R.id.botton_create );
+        user = (TextInputEditText) findViewById(R.id.new_user_name_box);
+        pass = (TextInputEditText) findViewById(R.id.new_user_pass_box);
+        button_create = (Button) findViewById(R.id.button_create );
 
 
     }
 
 
     // Metodo para el boton Crear nueva cuenta, validaciones
-    public void btnCrear (View view) {
+    public void btnCreate (View view) {
 
         SQLiteDatabase db = dbController.getWritableDatabase();
 
@@ -53,8 +53,8 @@ public class NewAccountActivity extends AppCompatActivity {
             Toast.makeText(this,"Debes ingresar un password", Toast.LENGTH_LONG).show();
         }
         if (name.length() !=0 && password.length() != 0 ) {
-            Boolean checkuser = dbController.checkUserNamePass(name,password);
-            if (checkuser == false) {
+            Boolean checkUser = dbController.checkUserNamePass(name,password);
+            if (checkUser == false) {
                 Boolean insert = dbController.insertData(name, password);
                 if (insert == true ) {
                     Toast.makeText(this, "Registro en proceso...", Toast.LENGTH_LONG).show();

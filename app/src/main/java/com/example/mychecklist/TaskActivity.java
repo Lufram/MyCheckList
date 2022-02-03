@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.mychecklist;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,25 +13,26 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.myapplication.db.DbController;
+import com.example.mychecklist.db.DbController;
 
 public class TaskActivity extends AppCompatActivity {
 
     private DbController dbController;
-    private ArrayAdapter<String> myAdapter;
     private ListView listViewTasks;
+
+
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        super.onCreate(saveInstanceState);
+        setContentView(R.layout.activity_task);
         dbController = new DbController(this);
         listViewTasks = (ListView) findViewById(R.id.listTasks);
         updateUI();
     }
 
     @Override
-    public boolean onOptionsItemMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu( menu);
     }
@@ -48,7 +49,7 @@ public class TaskActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i){
                         String task = textBox.getText().toString();
-                        dbController.addTask(user_id, task);
+                        dbController.addTask( dbController.sessionId , task);
                         updateUI();
                     }
                  })
@@ -59,14 +60,18 @@ public class TaskActivity extends AppCompatActivity {
     }
 
     private void updateUI(){
-
-        myAdapter = new ArrayAdapter<>(this, layout.item_task, R.id.task_title, dbController.getAllTask());
-        listViewTasks.setAdapter(myAdapter);
+        if (dbController.regLength() == 0) {
+            listViewTasks.setAdapter(null);
+        }  else {
+            // Adapter para rellenar un ListView
+            ArrayAdapter<String> myAdapter = new ArrayAdapter<>(this, R.layout.item_task, R.id.task_title, dbController.getAllTask());
+            listViewTasks.setAdapter(myAdapter);
+        }
 
     }
 
     public void deleteTask(View view) {
-        View parent = view.getParent();
+        View parent = (View) view.getParent();
         TextView taskTextView = (TextView) parent.findViewById(R.id.task_title);
         String task = taskTextView.getText().toString();
         dbController.deleteTask(task);

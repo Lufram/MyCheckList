@@ -14,8 +14,8 @@
         android:background="@drawable/gradient_back_green" />
 
     <TextView
-        android:id="@+id/nuevo_usuario"
-        style="@style/etiquetas"
+        android:id="@+id/new_user_name"
+        style="@style/label"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="26dp"
@@ -28,8 +28,8 @@
         android:textSize="20sp" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/caja_nuevo_usuario"
-        style="@style/cajasTexto"
+        android:id="@+id/new_user_name_box"
+        style="@style/textBox"
         android:layout_width="382dp"
         android:layout_height="48dp"
         android:layout_alignParentTop="true"
@@ -41,8 +41,8 @@
     <requestFocus />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/caja_nuevo_password"
-        style="@style/cajasTexto"
+        android:id="@+id/new_user_pass_box"
+        style="@style/textBox"
         android:layout_width="381dp"
         android:layout_height="48dp"
         android:layout_alignParentTop="true"
@@ -55,10 +55,10 @@
 
     <TextView
         android:id="@+id/nuevo_password"
-        style="@style/etiquetas"
+        style="@style/label"
         android:layout_width="99dp"
         android:layout_height="31dp"
-        android:layout_below="@id/caja_nuevo_usuario"
+        android:layout_below="@id/new_user_name_box"
         android:layout_alignParentStart="true"
         android:layout_marginStart="25dp"
         android:layout_marginTop="37dp"
@@ -72,22 +72,22 @@
 
     <!-- Boton Crear-->
     <Button
-        android:id="@+id/boton_crear"
+        android:id="@+id/button_create"
         android:layout_width="378dp"
         android:layout_height="57dp"
-        android:layout_below="@id/caja_nuevo_password"
+        android:layout_below="@id/new_user_pass_box"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
-        android:background="@drawable/boton"
-        android:onClick="btnCrear"
+        android:background="@drawable/button"
+        android:onClick="btnCreate"
         android:text="@string/create"
-        android:textColor="@color/secondary_text"
+        android:textColor="@color/primary_100"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <!-- Boton Volver -->
     <Button
-        android:id="@+id/boton_volver"
+        android:id="@+id/button_back"
         android:layout_width="142dp"
         android:layout_height="55dp"
         android:layout_alignParentBottom="true"
@@ -95,8 +95,8 @@
         android:layout_marginTop="104dp"
         android:layout_marginBottom="118dp"
         android:text="@string/back"
-        android:onClick="btnVolver"
-        android:background="@drawable/boton"
+        android:onClick="btnBack"
+        android:background="@drawable/button"
         android:textColor="@color/white"
         android:textStyle="bold"/>
 

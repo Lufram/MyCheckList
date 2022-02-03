@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.mychecklist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.db.DbController;
+import com.example.mychecklist.db.DbController;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
@@ -28,26 +28,26 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         // Fuente texto
-        Typeface miFuente = Typeface.createFromAsset(getAssets(), "Vuldo.ttf");
+        Typeface myFont = Typeface.createFromAsset(getAssets(), "Vuldo.ttf");
 
         // Agregar fuentes
-        TextView subtitulo = (TextView) findViewById(R.id.subtitulo_login);
-        TextView titulo = (TextView) findViewById(R.id.titulo_login);
-        TextView cuentaNueva = findViewById(R.id.crear_cuenta);
-        TextView botonLogin = (TextView) findViewById(R.id.boton_login);
+        TextView subtitle = (TextView) findViewById(R.id.subtitle_login);
+        TextView title = (TextView) findViewById(R.id.title_login);
+        TextView newAccount = (TextView) findViewById(R.id.createAccount);
+        TextView loginBotton = (TextView) findViewById(R.id.button_login);
 
 
         // Asignar Fuente a Etiquetas
-        subtitulo.setTypeface(miFuente);
-        titulo.setTypeface(miFuente);
-        cuentaNueva.setTypeface(miFuente);
-        botonLogin.setTypeface(miFuente);
+        subtitle.setTypeface(myFont);
+        title.setTypeface(myFont);
+        newAccount.setTypeface(myFont);
+        loginBotton.setTypeface(myFont);
     }
 
     // metodo para boton Login
     public void login (View view) {
-        TextInputEditText user = (TextInputEditText) findViewById(R.id.cajaUser);
-        TextInputEditText password = (TextInputEditText) findViewById(R.id.cajaPass);
+        TextInputEditText user = (TextInputEditText) findViewById(R.id.userBox);
+        TextInputEditText password = (TextInputEditText) findViewById(R.id.passBox);
 
         String name = user.getText().toString();
         String pass = password.getText().toString();
@@ -59,10 +59,11 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this,"Debes ingresar un password", Toast.LENGTH_LONG).show();
         }
         if (name.length() !=0 && pass.length() != 0 ) {
-            Boolean checkUserNamePass = dbController.checkUserNamePass(name,password);
+            Boolean checkUserNamePass = dbController.checkUserNamePass(name,pass);
             if (checkUserNamePass) {
                 Intent intent = new Intent(this,TaskActivity.class);
                 startActivity(intent);
+                dbController.sessionId = 0;
             } else {
                 Toast.makeText(this,"Datos no válidos", Toast.LENGTH_LONG).show();
             }

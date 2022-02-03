@@ -1,4 +1,4 @@
-package com.example.myapplication.db;
+package com.example.mychecklist.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,9 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 public class DbController extends SQLiteOpenHelper {
+
+    public static int sessionId;
 
     public DbController(Context context) {
         super(context, "com.example.myapplication.db", null, 1);
@@ -17,7 +17,7 @@ public class DbController extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("PRAGMA foreign_kets=ON");
-        db.execSQL("CREATE TABLE USERS (USER_ID PRIMARY KEY AUTOINCREMENT,  USER_NAME TEXT NOT NULL, PASSWORD INTEGER  NOT NULL);");
+        db.execSQL("CREATE TABLE USERS (USER_ID INTEGER PRIMARY KEY AUTOINCREMENT,  USER_NAME TEXT NOT NULL, PASSWORD INTEGER  NOT NULL);");
         db.execSQL("CREATE TABLE TASKS (TASK_ID INTEGER PRIMARY KEY AUTOINCREMENT, TASK_NAME TEXT NOT NULL, USER_ID INTEGER REFERENCES USERS(USER_ID));");
 
     }
@@ -68,7 +68,26 @@ public class DbController extends SQLiteOpenHelper {
         }
     }
 
+    public int getIdUserByName (String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor;
+        cursor = db.rawQuery("SELECT USER_ID FROM USERS WHERE USER_NAME =?", new String[] {name});
+        if (cursor.getCount()>0) {
+            return cursor.getInt(0);
+        }else {
+            return 0;
+        }
+    }
 
+    // devuelve numero de registros que tiene la tabla
+    public int regLength() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor;
+        cursor = db.rawQuery("SELECT * FROM TASKS", null);
+
+        return cursor.getCount();
+    }
 
 
     public void addTask (int userId , String task){
@@ -79,7 +98,7 @@ public class DbController extends SQLiteOpenHelper {
 
 
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("INSERT INTO TASKS VALUES('' + userId + '', null, '' + task + '')");
+        db.execSQL("INSERT INTO TASKS VALUES(null,'' + task + '','' + sessionId + '')");
 
         db.close();
 
@@ -89,7 +108,7 @@ public class DbController extends SQLiteOpenHelper {
     public String[] getAllTask() {
         String[] tasks=null;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM TAREAS WHERE USER_ID = '' + userId + '' ;", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM TASKS WHERE USER_ID = '' + sessionId + '' ;", null);
         int regs = cursor.getCount();
 
         if (regs == 0){
@@ -106,8 +125,8 @@ public class DbController extends SQLiteOpenHelper {
             return tasks;
         }
     }
-    public void deleteTask (String task) {
 
+    public void deleteTask (String task) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete("TASKS", "NOMBRE=?", new String[]{task});
         db.close();

@@ -1,22 +1,26 @@
-package com.example.myapplication;
+package com.example.mychecklist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.example.mychecklist.db.DbController;
+
 public class SplashActivity extends AppCompatActivity implements Animation.AnimationListener{
+
+    private DbController dbController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
-
+        dbController = new DbController(this);
+        dbController.sessionId = 0;
         Animation animSplash = AnimationUtils.loadAnimation(this, R.anim.splash_logo);
         ImageView splashLogo = (ImageView) findViewById(R.id.imageViewLogo);
         splashLogo.startAnimation(animSplash);
