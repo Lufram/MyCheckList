@@ -93,12 +93,12 @@ public class DbController extends SQLiteOpenHelper {
     public void addTask (int userId , String task){
 
         ContentValues signIn = new ContentValues();
+        signIn.put("TASK_NAME", task);
         signIn.put("USER_ID", userId);
-        signIn.put("NAME", task);
 
 
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("INSERT INTO TASKS VALUES(null,'' + task + '','' + sessionId + '')");
+        db.insert("TASKS",null, signIn);
 
         db.close();
 
@@ -108,7 +108,7 @@ public class DbController extends SQLiteOpenHelper {
     public String[] getAllTask() {
         String[] tasks=null;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM TASKS WHERE USER_ID = '' + sessionId + '' ;", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM TASKS WHERE USER_ID = " + sessionId + ";", null);
         int regs = cursor.getCount();
 
         if (regs == 0){
@@ -128,7 +128,7 @@ public class DbController extends SQLiteOpenHelper {
 
     public void deleteTask (String task) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("TASKS", "NOMBRE=?", new String[]{task});
+        db.delete("TASKS", "TASK_NAME=?", new String[]{task});
         db.close();
 
     }
