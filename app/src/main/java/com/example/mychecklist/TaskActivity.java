@@ -19,6 +19,7 @@ public class TaskActivity extends AppCompatActivity {
 
     private DbController dbController;
     private ListView listViewTasks;
+    private int sessionId;
 
 
 
@@ -26,7 +27,8 @@ public class TaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_task);
-        dbController = new DbController(this);
+        sessionId = getIntent().getIntExtra("session",0);
+        dbController = new DbController(this,sessionId);
         listViewTasks = (ListView) findViewById(R.id.listTasks);
         updateUI();
     }
@@ -49,7 +51,7 @@ public class TaskActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i){
                         String task = textBox.getText().toString();
-                        dbController.addTask( dbController.sessionId , task);
+                        dbController.addTask( sessionId , task);
                         updateUI();
                     }
                  })
@@ -72,7 +74,7 @@ public class TaskActivity extends AppCompatActivity {
 
     public void deleteTask(View view) {
         View parent = (View) view.getParent();
-        TextView taskTextView = (TextView) parent.findViewById(R.id.task_title);
+        TextView taskTextView = parent.findViewById(R.id.task_title);
         String task = taskTextView.getText().toString();
         dbController.deleteTask(task);
         updateUI();

@@ -13,20 +13,20 @@
         android:background="@drawable/gradient_back_green" />
 
     <!-- titulo -->
-    <TextView
-        android:id="@+id/title_login"
-        style="@style/label"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:text="@string/my_check_list"
-        android:textColor="@color/primary_900"
-        android:textSize="50sp"
-        android:letterSpacing="0.1"/>
-
 
 
     <!-- subtitulo -->
+
+    <ImageView
+        android:id="@+id/title_login"
+        android:layout_width="252dp"
+        android:layout_height="152dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="28dp"
+        app:srcCompat="@drawable/logo_splash" />
+
     <TextView
         android:id="@+id/subtitle_login"
         style="@style/label"
@@ -37,8 +37,8 @@
         android:letterSpacing="0.01"
         android:text="@string/login"
         android:textAlignment="textStart"
-        android:textColor="@color/primary_100"
-        android:textSize="40sp" />
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
 
     <!-- Fondo cuadrado del login -->
@@ -46,75 +46,74 @@
         android:id="@+id/login_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_below="@id/subtitle_login"
-        android:background="@color/white"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="16dp"
+        android:background="@drawable/round_w_back_top"
+        android:orientation="vertical"
         android:padding="10dp"
-        >
+        android:radius="50dp">
 
 
         <!-- caja texto usuario -->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/inputBox"
-            >
+        <com.google.android.material.textfield.TextInputLayout style="@style/inputBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/userBox"
                 style="@style/textBox"
+                android:drawableLeft="@drawable/ic_user"
                 android:hint="@string/user"
-                android:inputType="textPersonName"
-                android:drawableLeft="@drawable/ic_user"/>
+                android:inputType="textPersonName" />
+
             <requestFocus />
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
         <!-- caja texto password -->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/inputBox"
-            >
+        <com.google.android.material.textfield.TextInputLayout style="@style/inputBox">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passBox"
                 style="@style/textBox"
+                android:drawableLeft="@drawable/ic_password"
                 android:hint="@string/password"
-                android:inputType="textPassword"
-                android:drawableLeft="@drawable/ic_password"/>
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
     </LinearLayout>
 
     <!-- Boton -->
+
+    <!-- Crear cuenta -->
     <Button
         android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/login_box"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="-2dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/button"
+        android:background="@drawable/roud_back_bottom"
         android:onClick="login"
-        android:text="@string/login"
-        android:textColor="@color/primary_100"
+        android:text="@string/entry"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <!-- Crear cuenta -->
     <Button
         android:id="@+id/createAccount"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="136dp"
-        android:background="@color/accent_900"
+        android:layout_marginBottom="137dp"
         android:letterSpacing="0.1"
         android:onClick="createAccount"
         android:text="@string/sign_up"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"

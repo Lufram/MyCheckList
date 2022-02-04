@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
-
+    android:padding="16dp"
+    android:background="@drawable/round_w_back"
+    android:layout_margin="10dp"
+    android:layout_marginBottom="30dp">
 
     <TextView
         android:id="@+id/task_title"
@@ -19,7 +22,9 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:onClick="deleteTask"
         android:text="Check"
-        android:layout_alignParentRight="true"/>
+        app:cornerRadius="50dp" />
 
 </RelativeLayout>

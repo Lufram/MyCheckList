@@ -2,16 +2,27 @@ package com.example.mychecklist.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbController extends SQLiteOpenHelper {
 
-    public static int sessionId;
 
-    public DbController(Context context) {
+    private int sessionId;
+
+    public DbController(Context context, int sessionId) {
         super(context, "com.example.myapplication.db", null, 1);
+        this.sessionId = sessionId;
+    }
+
+    public int getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(int sessionId) {
+        this.sessionId = sessionId;
     }
 
     @Override
@@ -71,9 +82,11 @@ public class DbController extends SQLiteOpenHelper {
     public int getIdUserByName (String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor;
-        cursor = db.rawQuery("SELECT USER_ID FROM USERS WHERE USER_NAME =?", new String[] {name});
+        cursor = db.rawQuery("SELECT USER_ID FROM USERS WHERE USER_NAME =?",  new String[]{name});
         if (cursor.getCount()>0) {
-            return cursor.getInt(0);
+            cursor.moveToFirst();
+            int id = cursor.getInt(0);
+            return id;
         }else {
             return 0;
         }
@@ -84,7 +97,7 @@ public class DbController extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor;
-        cursor = db.rawQuery("SELECT * FROM TASKS", null);
+        cursor = db.rawQuery("SELECT * FROM TASKS WHERE USER_ID = " + sessionId + ";", null);
 
         return cursor.getCount();
     }
@@ -106,7 +119,7 @@ public class DbController extends SQLiteOpenHelper {
     }
 
     public String[] getAllTask() {
-        String[] tasks=null;
+        String[] tasks;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM TASKS WHERE USER_ID = " + sessionId + ";", null);
         int regs = cursor.getCount();

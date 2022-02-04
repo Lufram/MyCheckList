@@ -15,39 +15,39 @@ import com.google.android.material.textfield.TextInputEditText;
 public class LoginActivity extends AppCompatActivity {
 
     private DbController dbController;
+    private int sessionId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        dbController = new DbController(this);
+        sessionId = 0;
+        dbController = new DbController(this,sessionId);
 
 
         // ocultar Action Bar
         getSupportActionBar().hide();
 
         // Fuente texto
-        Typeface myFont = Typeface.createFromAsset(getAssets(), "Vuldo.ttf");
+        Typeface robotoR = Typeface.createFromAsset(getAssets(), "roboto/Roboto-Regular.ttf");
+        Typeface robotoB = Typeface.createFromAsset(getAssets(), "roboto/Roboto-Bold.ttf");
 
         // Agregar fuentes
-        TextView subtitle = (TextView) findViewById(R.id.subtitle_login);
-        TextView title = (TextView) findViewById(R.id.title_login);
-        TextView newAccount = (TextView) findViewById(R.id.createAccount);
-        TextView loginBotton = (TextView) findViewById(R.id.button_login);
+        TextView subtitle = findViewById(R.id.subtitle_login);
+        TextView newAccount =  findViewById(R.id.createAccount);
+        TextView loginBotton =  findViewById(R.id.button_login);
 
 
         // Asignar Fuente a Etiquetas
-        subtitle.setTypeface(myFont);
-        title.setTypeface(myFont);
-        newAccount.setTypeface(myFont);
-        loginBotton.setTypeface(myFont);
+        subtitle.setTypeface(robotoB);
+        newAccount.setTypeface(robotoR);
+        loginBotton.setTypeface(robotoR);
     }
 
     // metodo para boton Login
     public void login (View view) {
-        TextInputEditText user = (TextInputEditText) findViewById(R.id.userBox);
-        TextInputEditText password = (TextInputEditText) findViewById(R.id.passBox);
+        TextInputEditText user = findViewById(R.id.userBox);
+        TextInputEditText password = findViewById(R.id.passBox);
 
         String name = user.getText().toString();
         String pass = password.getText().toString();
@@ -61,9 +61,12 @@ public class LoginActivity extends AppCompatActivity {
         if (name.length() !=0 && pass.length() != 0 ) {
             Boolean checkUserNamePass = dbController.checkUserNamePass(name,pass);
             if (checkUserNamePass) {
+                sessionId = dbController.getIdUserByName(name);
+                dbController.setSessionId(sessionId);
                 Intent intent = new Intent(this,TaskActivity.class);
+                intent.putExtra("session",sessionId);
                 startActivity(intent);
-                dbController.sessionId = 0;
+
             } else {
                 Toast.makeText(this,"Datos no válidos", Toast.LENGTH_LONG).show();
             }

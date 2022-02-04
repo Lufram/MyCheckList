@@ -27,7 +27,7 @@ public class NewAccountActivity extends AppCompatActivity {
         // ocultar Action Bar
         getSupportActionBar().hide();
 
-        dbController = new DbController(this);
+        dbController = new DbController(this,0);
 
 
         user = (TextInputEditText) findViewById(R.id.new_user_name_box);
