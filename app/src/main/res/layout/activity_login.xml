@@ -62,9 +62,13 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/userBox"
                 style="@style/textBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:drawableLeft="@drawable/ic_user"
                 android:hint="@string/user"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="@android:color/black"
+                android:textColorHint="#757575" />
 
             <requestFocus />
         </com.google.android.material.textfield.TextInputLayout>
@@ -76,9 +80,13 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passBox"
                 style="@style/textBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:drawableLeft="@drawable/ic_password"
-                android:hint="@string/password"
-                android:inputType="textPassword" />
+                android:hint="@string/contrasena"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black"
+                android:textColorHint="#757575" />
         </com.google.android.material.textfield.TextInputLayout>
 
 

@@ -17,14 +17,12 @@ public class DbController extends SQLiteOpenHelper {
         this.sessionId = sessionId;
     }
 
-    public int getSessionId() {
-        return sessionId;
-    }
 
     public void setSessionId(int sessionId) {
         this.sessionId = sessionId;
     }
 
+    // Creamos 2 BBBDD usuarios, tareas.
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("PRAGMA foreign_kets=ON");
@@ -79,6 +77,7 @@ public class DbController extends SQLiteOpenHelper {
         }
     }
 
+    // DEVUELVE ID USUARIO
     public int getIdUserByName (String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor;
@@ -103,6 +102,7 @@ public class DbController extends SQLiteOpenHelper {
     }
 
 
+    // AÑADIR TAREA A LA TABLA
     public void addTask (int userId , String task){
 
         ContentValues signIn = new ContentValues();
@@ -118,6 +118,7 @@ public class DbController extends SQLiteOpenHelper {
 
     }
 
+    // DEVUELVE TODAS LAS TAREAS DE LA TABLA DE EL USUARIO COMPARANDO POR ID
     public String[] getAllTask() {
         String[] tasks;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -139,6 +140,7 @@ public class DbController extends SQLiteOpenHelper {
         }
     }
 
+    //BORRA TAREA
     public void deleteTask (String task) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete("TASKS", "TASK_NAME=?", new String[]{task});

@@ -39,9 +39,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // Asignar Fuente a Etiquetas
-        subtitle.setTypeface(robotoB);
+        subtitle.setTypeface(robotoR);
         newAccount.setTypeface(robotoR);
-        loginBotton.setTypeface(robotoR);
+        loginBotton.setTypeface(robotoB);
     }
 
     // metodo para boton Login
@@ -52,11 +52,8 @@ public class LoginActivity extends AppCompatActivity {
         String name = user.getText().toString();
         String pass = password.getText().toString();
 
-        if (name.length() == 0) {
-            Toast.makeText(this,"Debes ingresar un nombre", Toast.LENGTH_LONG).show();
-        }
-        if (pass.length() == 0) {
-            Toast.makeText(this,"Debes ingresar un password", Toast.LENGTH_LONG).show();
+        if (name.equals("") || password.equals("")) {
+            Toast.makeText(this,"Debes completar todos los campos", Toast.LENGTH_LONG).show();
         }
         if (name.length() !=0 && pass.length() != 0 ) {
             Boolean checkUserNamePass = dbController.checkUserNamePass(name,pass);
@@ -73,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    // metodo Crear Cuenta (necesario pasarle un View)
+    // metodo Crear Cuenta
     public void createAccount (View view) {
         Intent i = new Intent(this, NewAccountActivity.class);
         startActivity(i);

@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">My Check List</string>
+    <string name="app_name">My CheckList</string>
     <string name="name">Nombre</string>
     <string name="password">Password</string>
-    <string name="login">Inicio de sesion</string>
+    <string name="login">Inicio de sesión</string>
     <string name="loading">Loading</string>
 
     <string name="user_name">Nombre usuario</string>
@@ -17,4 +17,8 @@
     <string name="login_failed">"Login failed"</string>
     <string name="point">.</string>
     <string name="entry">Entrar</string>
+    <string name="borrar">Borrar</string>
+    <string name="cargando">Cargando</string>
+    <string name="contrasena">Contraseña</string>
+
 </resources>
